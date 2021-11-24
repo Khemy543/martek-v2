@@ -9,17 +9,15 @@ export default function CategaoryProducts({ data, meta, links }) {
   return (
     <div className="bg-white">
       <div className="max-w-2xl mx-auto py-16 px-4 sm:py-14 sm:px-6 lg:max-w-7xl lg:px-8">
-      <h2 className="text-2xl font-extrabold tracking-tight text-gray-900">
-              Phone and Accessories
-            </h2>
+      <h2 className="text-2xl font-extrabold tracking-tight text-gray-900 mb-5">Phone and Accessories</h2>
 
 
-        <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+        <div className="grid grid-cols-1 gap-y-10 sm:grid-cols-2 gap-x-6 lg:grid-cols-3 xl:grid-cols-6 xl:gap-x-8">
           {data[0].map((product:object) => (
             <div key={product['id']} className="group relative">
-            <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
+            <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-48 lg:aspect-none">
               {product['product_image'][0]?
-              <div className="w-full h-full object-center object-cover lg:w-full lg:h- relative overflow-hidden">
+              <div className="w-full h-full object-center object-cover lg:w-full lg:h-48 relative overflow-hidden">
                 <Image
                   src={`https://backend-api.martekgh.com/${product['product_image'][0]['path']}`}
                   alt={product['name']}

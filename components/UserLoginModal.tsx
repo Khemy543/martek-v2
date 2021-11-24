@@ -4,7 +4,7 @@ import { LockClosedIcon, XIcon} from "@heroicons/react/outline";
 import {useAppDispatch, useAppSelector } from '../store/hooks'
 import { selectModal } from "../store/selectors/modalSelectors";
 import { setLoginModal } from "../store/actions/modalActions";
-import { setUser } from "../store/actions/userActions";
+import { setUser, setUserCart } from "../store/actions/userActions";
 import UserAPI from "../utils/user";
 
 export default function UserLoginModal() {
@@ -28,16 +28,21 @@ export default function UserLoginModal() {
         const { data } = await UserAPI.login(email, password);
 
         if(data){
+
             window.localStorage.setItem('authToken', data.access_token);
+
             const userResponse = await UserAPI.getProfile();
-            
-            if(userResponse && userResponse.data){
-                dispatch(setUser(userResponse.data));
-                closeModal()
+            const cartResponse = await UserAPI.userCart();
+
+            if(cartResponse && userResponse){
+              const value : object[] = cartResponse.data.cart[0];
+              dispatch(setUserCart({value, amount:cartResponse.data.cart[1]}));
+              dispatch(setUser(userResponse.data));
+              closeModal()
             }
         }
     } catch (error) {
-        
+        console.log(error)
     }
   }
   return (

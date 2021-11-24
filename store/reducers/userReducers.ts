@@ -25,7 +25,7 @@ export const userReducer = createReducer(initialState, builder => {
         .addCase(setUserCart, (state, { payload }) => {
             console.log('payload', payload)
             state.cart = [...state.cart, ...payload['value']];
-            state.cartTotal = state.cartTotal +  payload['amount']
+            state.cartTotal = Number(state.cartTotal) +  Number(payload['amount'])
         })
         .addCase(removeFromCart, (state, { payload }) => {
             state.cart = state.cart.filter((item:object) => item['id'] !== payload);

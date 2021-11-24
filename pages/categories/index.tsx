@@ -1,6 +1,7 @@
 import type { ReactElement } from "react";
 import DefaultLayout from "../../layouts/default-layout";
 import Link from 'next/link' 
+import Image from 'next/image'
 
 const categories = [
     {
@@ -68,11 +69,14 @@ export default function Categories() {
                     <Link href={`/categories/${callout.id}`}>
                         <a>
                   <div className="relative w-full h-80 rounded-lg overflow-hidden group-hover:opacity-75 sm:aspect-w-2 sm:aspect-h-1 sm:h-64 lg:aspect-w-1 lg:aspect-h-1">
-                    <img
-                      src={callout.imageSrc}
-                      alt={callout.category}
-                      className="w-full h-full object-center object-cover"
-                    />
+                    <div className="w-full h-full object-center object-cover relative">
+                      <Image
+                        src={callout.imageSrc}
+                        alt={callout.category}
+                        layout="fill"
+                        className=" object-cover"
+                      />
+                    </div>
                     <div className=" absolute top-0 h-80 w-full image-category"></div>
 
                     <div className=" absolute bottom-0 p-5 text-white">

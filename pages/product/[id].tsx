@@ -78,10 +78,13 @@ export default function Product({ product }) {
           <div className=" mt-4 flex space-x-3 items-center">
             <div>
               {product['product_owner']['company_name'] ?
-              <img 
-                className=" h-12 w-12 rounded-full object-cover"
-                src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${product['product_owner']['avatar']}`} 
-                alt="" />
+              <div className=" h-12 w-12 rounded-full object-cover relative overflow-hidden">
+                <Image 
+                  src={`${process.env.NEXT_PUBLIC_IMAGE_URL}${product['product_owner']['avatar']}`} 
+                  alt="" 
+                  layout="fill"
+                  />
+              </div>
                 :
                 <div className=" w-12 h-12 bg-blue-600 text-white rounded-full flex justify-center items-center">
                   MG

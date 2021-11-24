@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { BellIcon, MenuIcon, XIcon, ChevronDownIcon, ShoppingBagIcon, ShoppingCartIcon, UserIcon } from "@heroicons/react/outline";
+import { BellIcon, MenuIcon, XIcon, ChevronDownIcon, ShoppingBagIcon, ShoppingCartIcon, UserIcon, HeartIcon } from "@heroicons/react/outline";
 import Image from 'next/image'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { selectUser, selectUserCart } from "../store/selectors/userSelector";
@@ -12,7 +12,7 @@ import { setUser } from "../store/actions/userActions";
 const navigation = [
   { name: "Campus", href: "#", current: false, icon: ChevronDownIcon },
   { name: "My Shop", href: "#", current: false , icon : ShoppingBagIcon},
-  { name : "Shops", href:"#", current:false, icon : null},
+  { name : "Shops", href:"/shops", current:false, icon : null},
   { name: "Categories", href:"/categories", current:false, icon : null }
 ];
 
@@ -104,6 +104,11 @@ export default function Header() {
                   <div onClick={() => dispatch(setCartModal(true))} className=" shadow-md relative rounded-full bg-blue-500 h-10 cursor-pointer hover:bg-blue-600 w-10 text-white flex justify-center items-center">
                     <ShoppingCartIcon className=" h-6 w-6" />
                     <div style={{ top:"-5px", right:"-5px" }} className=" absolute h-5 w-5 text-sm font-bold flex justify-center items-center rounded-full bg-red-600 text-white">{cart.length}</div>
+                  </div>
+
+                  <div className=" shadow-md relative rounded-full ml-4 bg-blue-500 h-10 cursor-pointer hover:bg-blue-600 w-10 text-white flex justify-center items-center">
+                    <HeartIcon className=" h-6 w-6" />
+                    <div style={{ top:"-5px", right:"-5px" }} className=" absolute h-5 w-5 text-sm font-bold flex justify-center items-center rounded-full bg-red-600 text-white">0</div>
                   </div>
               {!user?
                 <div>

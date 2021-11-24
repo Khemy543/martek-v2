@@ -18,15 +18,16 @@ export default function Home({ newThisWeek, phonesAndAccessories }) {
               Phone and Accessories
             </h2>
 
-            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-8">
               {phonesAndAccessories[0].map((product:object) => (
                 <div key={product['id']} className="group relative">
-                  <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                    <div className="w-full h-full object-center object-cover lg:w-full lg:h- relative overflow-hidden">
+                  <div className="w-full min-h-40 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-48 lg:aspect-none">
+                    <div className="w-full h-full object-center object-cover lg:w-full lg:h-48 relative overflow-hidden">
                       <Image
                         src={`https://backend-api.martekgh.com/${product['product_image'][0]['path']}`}
                         alt={product['name']}
                         layout="fill"
+                        className=" object-cover"
                       />
                     </div>
                   </div>
@@ -61,11 +62,11 @@ export default function Home({ newThisWeek, phonesAndAccessories }) {
               New This Week
             </h2>
 
-            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-6 xl:gap-x-8">
               {newThisWeek.map((product:object) => (
                 <div key={product['id']} className="group relative">
-                  <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-80 lg:aspect-none">
-                    <div className="w-full h-full object-center object-cover lg:w-full lg:h- relative overflow-hidden">
+                  <div className="w-full min-h-80 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-48 lg:aspect-none">
+                    <div className="w-full h-full object-center object-cover lg:w-full lg:h-48 relative overflow-hidden">
                       <Image
                         src={`https://backend-api.martekgh.com/${product['product_image'][0]['path']}`}
                         alt={product['name']}

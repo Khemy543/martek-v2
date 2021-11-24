@@ -64,14 +64,26 @@ const UserAPI = {
         const token : string = window.localStorage.getItem('authToken');
 
         try {
-            const response = await API.get('user-cart', {
-                headers: {
-                    Authorization : `Bearer ${token}`
-                }
-            });
+            if(token){
+                const response = await API.get('user-cart', {
+                    headers: {
+                        Authorization : `Bearer ${token}`
+                    }
+                });
+    
+                return response
+            }
+            return
+            
+        } catch (error) {
+            throw new Error(error.response)
+        }
+    },
+    getAllShops : async (pageNumber=1) => {
+        try {
+            const response = await API.get(`all-shops?page=${pageNumber}`);
 
             return response
-            
         } catch (error) {
             throw new Error(error.response)
         }

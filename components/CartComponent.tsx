@@ -8,7 +8,8 @@ import { setCartModal } from '../store/actions/modalActions'
 import { selectUserCart, selectCartAmount, selectUser } from '../store/selectors/userSelector'
 import Link from 'next/link'
 import ProductAPI from '../utils/products'
-import { setUserCart } from '../store/actions/userActions'
+import { setUserCart } from '../store/actions/userActions';
+import Image from 'next/image'
 
 
 export default function CartComponent() {
@@ -96,11 +97,13 @@ export default function CartComponent() {
                             <li key={product['id']} className="py-6 flex">
                               <div className="flex-shrink-0 w-24 h-24 border border-gray-200 rounded-md overflow-hidden">
                                 {product['product_images'][0]? 
-                                <img
-                                  src={`https://backend-api.martekgh.com/${product['product_images'][0]['path']}`}
-                                  alt={product['product_name']}
-                                  className="w-full h-full object-center object-cover"
-                                />
+                                <div className="w-full h-full bg-gray-300 object-center object-cover relative overflow-hidden">
+                                  <Image
+                                    src={`https://backend-api.martekgh.com/${product['product_images'][0]['path']}`}
+                                    alt={product['product_name']}
+                                    layout="fill"
+                                  />
+                                </div>
                                 :
                                 <div className=" w-full h-full bg-gray-200">
 
@@ -138,7 +141,7 @@ export default function CartComponent() {
                   <div className="border-t border-gray-200 py-6 px-4 sm:px-6">
                     <div className="flex justify-between text-base font-medium text-gray-900">
                       <p>Subtotal</p>
-                      <p>GHS {totalAmount.toFixed(2)}</p>
+                      <p>GHS {Number(totalAmount).toFixed(2)}</p>
                     </div>
                     <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                     <div className="mt-6">
