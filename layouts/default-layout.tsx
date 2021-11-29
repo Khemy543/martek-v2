@@ -7,6 +7,7 @@ import { selectUser } from "../store/selectors/userSelector";
 import UserAPI from '../utils/user';
 import { setUser, setUserCart } from '../store/actions/userActions';
 import CartComponent from '../components/CartComponent';
+import UserRegistrationModal from '../components/UserRegisterModal';
 
 export default function DefaultLayout({ children }){
 
@@ -55,6 +56,7 @@ export default function DefaultLayout({ children }){
                 { children }
             </main>
             <UserLoginModal />
+            <UserRegistrationModal />
             <CartComponent />
             <Footer />
         </div>

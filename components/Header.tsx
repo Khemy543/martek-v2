@@ -4,7 +4,7 @@ import { BellIcon, MenuIcon, XIcon, ChevronDownIcon, ShoppingBagIcon, ShoppingCa
 import Image from 'next/image'
 import { useAppDispatch, useAppSelector } from '../store/hooks'
 import { selectUser, selectUserCart } from "../store/selectors/userSelector";
-import { setCartModal, setLoginModal } from "../store/actions/modalActions";
+import { setCartModal, setLoginModal, setRegisterModal } from "../store/actions/modalActions";
 import Link from 'next/link'
 import UserAPI from "../utils/user";
 import { setUser } from "../store/actions/userActions";
@@ -12,8 +12,7 @@ import { setUser } from "../store/actions/userActions";
 const navigation = [
   { name: "Campus", href: "#", current: false, icon: ChevronDownIcon },
   { name: "My Shop", href: "#", current: false , icon : ShoppingBagIcon},
-  { name : "Shops", href:"/shops", current:false, icon : null},
-  { name: "Categories", href:"/categories", current:false, icon : null }
+  { name : "All Shops", href:"/shops", current:false, icon : null}
 ];
 
 function classNames(...classes) {
@@ -146,6 +145,7 @@ export default function Header() {
                           <Menu.Item>
                             {({ active }) => (
                               <div
+                                onClick={() => dispatch(setRegisterModal(true))}
                                 className={classNames(
                                   active ? "bg-gray-100" : "",
                                   "block px-4 py-2 text-sm text-gray-700 cursor-pointer"

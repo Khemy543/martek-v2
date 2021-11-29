@@ -1,17 +1,20 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
     setLoginModal,
-    setCartModal
+    setCartModal,
+    setRegisterModal
 } from '../actions/modalActions'
 
 type UserState = {
     loginModal : boolean;
     cartModal : boolean;
+    registerModal : boolean
 }
 
 const initialState : UserState = {
     loginModal: false,
-    cartModal: false
+    cartModal: false,
+    registerModal:false
 }
 
 export const modalReducer = createReducer(initialState, builder => {
@@ -21,5 +24,8 @@ export const modalReducer = createReducer(initialState, builder => {
         })
         .addCase(setCartModal, (state, { payload }) => {
             state.cartModal = payload
+        })
+        .addCase(setRegisterModal, (state, {payload}) => {
+            state.registerModal = payload
         })
 })
